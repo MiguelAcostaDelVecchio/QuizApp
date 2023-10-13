@@ -18,8 +18,7 @@ struct QuestionView: View {
     // variable to let user know whether he clicked on the correct option or not
     @State var rightOrWrong = ""
     
-    // isShowing will control whether the rightOrWrong text is still visible to the user
-    @State var isShowingText = true
+    @State var isButtonPressed = false
     
     var gameColor = GameColor()
     
@@ -29,15 +28,11 @@ struct QuestionView: View {
                 
             Spacer()
             
-            if rightOrWrong == "Correct!" {
-                if isShowingText {
-                    CorrectOrIncorrectView(rightOrWrong: rightOrWrong, fontColor: gameColor.correctColor, isShowingText: $isShowingText)
-                }
-            } else if rightOrWrong == "Incorrect!" {
-                if isShowingText {
-                    CorrectOrIncorrectView(rightOrWrong: rightOrWrong, fontColor: gameColor.incorrectColor, isShowingText: $isShowingText)
-                }
-            }
+            Image(question.imgName)
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(8.0)
+                .padding()
             
             Spacer()
             
@@ -48,15 +43,14 @@ struct QuestionView: View {
                     Button(action: {
                         if answerIndex == question.correctAnswerIndex {
                             rightOrWrong = ""
-                            isShowingText = true
-                            rightOrWrong = "Correct!"
+                            rightOrWrong = "Correct"
                         } else {
+                            withAnimation{isButtonPressed.toggle()}
                             rightOrWrong = ""
-                            isShowingText = true
-                            rightOrWrong = "Incorrect!"
+                            rightOrWrong = "Incorrect"
                         }
                         viewModel.makeGuess(atIndex: answerIndex)
-                    }, label: {ChoiceTextView(choiceText: question.possibleAnswers[answerIndex])})
+                    }, label: {ChoiceTextView(choiceText: question.possibleAnswers[answerIndex], isButtonPressed: $isButtonPressed).modifier(ShakeEffect(shake: isButtonPressed))})
                 }
             }
             
@@ -64,18 +58,18 @@ struct QuestionView: View {
             
             NavigationLink(destination: EndScreenView(), isActive: $activateEndScreen, label: {Text("")})
             
-            if viewModel.guessWasMade && rightOrWrong == "Correct!" {
+            if viewModel.guessWasMade && rightOrWrong == "Correct" {
                 if viewModel.isLastQuestion == true {
                     Button(action: {
                         activateEndScreen = true
                     }, label: {
-                        ChoiceTextView(choiceText: "Finish")
+                        NormalTextView(buttonText: "Finish")
                     })
                 } else {
                     Button(action: {
                         viewModel.displayNextScreen()
                     }, label: {
-                        ChoiceTextView(choiceText: "Next Question")
+                        NormalTextView(buttonText: "Next Question")
                     })
                 }
                 
@@ -84,6 +78,17 @@ struct QuestionView: View {
             Spacer()
             
         }
+    }
+}
+
+// Fix this! this is not the shaking i was looking for
+struct ShakeEffect: ViewModifier {
+    let shake: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .offset(x: shake ? -5 : 0)
+            .animation(Animation.interpolatingSpring(stiffness: 10, damping: 1).repeatCount(1, autoreverses: true))
     }
 }
 
