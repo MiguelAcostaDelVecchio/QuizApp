@@ -48,9 +48,10 @@ struct QuestionView: View {
                             withAnimation{isButtonPressed.toggle()}
                             rightOrWrong = ""
                             rightOrWrong = "Incorrect"
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { withAnimation { isButtonPressed = false} }
                         }
                         viewModel.makeGuess(atIndex: answerIndex)
-                    }, label: {ChoiceTextView(choiceText: question.possibleAnswers[answerIndex], isButtonPressed: $isButtonPressed).modifier(ShakeEffect(shake: isButtonPressed))})
+                    }, label: {ChoiceTextView(choiceText: question.possibleAnswers[answerIndex]).scaleEffect(isButtonPressed ? 1.1 : 1.0).offset(x: isButtonPressed ? CGFloat.random(in: -10...10) : 0)})
                 }
             }
             
@@ -78,17 +79,6 @@ struct QuestionView: View {
             Spacer()
             
         }
-    }
-}
-
-// Fix this! this is not the shaking i was looking for
-struct ShakeEffect: ViewModifier {
-    let shake: Bool
-    
-    func body(content: Content) -> some View {
-        content
-            .offset(x: shake ? -5 : 0)
-            .animation(Animation.interpolatingSpring(stiffness: 10, damping: 1).repeatCount(1, autoreverses: true))
     }
 }
 
