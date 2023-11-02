@@ -13,7 +13,7 @@
 - Applied Reuseability Concepts: Re-use code where similar layout is called throughout the app
 ### Frameworks
 - SwiftUI
-- AVFoundation
+- Foundation
 ## How To Use
 How to use goes here...
 ## Author Info
