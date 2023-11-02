@@ -1,6 +1,5 @@
 # Quiz App
 ## Screen Shots
-![Alt Text](https://github.com/MiguelAcostaDelVecchio/QuizApp/blob/main/Gifs/QuizAppMainBranchGif.gif)
 <img src="https://github.com/MiguelAcostaDelVecchio/QuizApp/blob/main/Gifs/QuizAppMainBranchGif.gif" width="300" height="624" />
 ## Table of contents
 - [Description](https://github.com/MiguelAcostaDelVecchio/QuizApp/edit/main/README.md#description)
