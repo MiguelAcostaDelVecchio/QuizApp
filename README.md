@@ -9,12 +9,13 @@
 ## Description
 - A simple quiz application where the user is asked one question at a time and must select and answer from the multiple choices that are given.
 - Whenever the user taps on the right or wrong answer, the corresponding animation will appear to let the user know whether their choice was correct or incorrect.
-- The purpose of this app was to practice using SwiftUI and the MVVM architecture
+- The purpose of this app was to practice using SwiftUI and the MVVM architectural pattern
 - Applied Reuseability Concepts: Re-use code where similar layout is called throughout the app
 ### Frameworks
 - SwiftUI
 - Foundation
 ## How To Use
-How to use goes here...
+- Download the project and run it on Xcode
 ## Author Info
-Author info goes here...
+- Email: macostadelvecchio@gmail.com
+- Linkedin: https://www.linkedin.com/in/miguel-acosta7
