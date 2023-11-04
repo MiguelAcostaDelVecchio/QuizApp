@@ -18,7 +18,7 @@ struct WelcomeView: View {
                     Spacer()
                     Text("Select the correct answers to the following questions").font(.title).bold().padding()
                     Spacer()
-                    NavigationLink(destination: GameView(), label: {NormalTextView(buttonText:  "Okay let's gooo!")})
+                    NavigationLink(destination: GameView(), label: {ChoiceTextView(choiceText: "Okay let's gooo!")})
                     Spacer()
                 }
                 .foregroundColor(.white)

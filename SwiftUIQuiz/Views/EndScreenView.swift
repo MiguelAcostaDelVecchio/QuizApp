@@ -20,7 +20,7 @@ struct EndScreenView: View {
                 Button(action: {
                     goHome = true
                 }, label: {
-                    NormalTextView(buttonText: "Return Home")
+                    ChoiceTextView(choiceText: "Return Home")
                 })
                 
             }

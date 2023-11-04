@@ -19,7 +19,6 @@
 		047C298D2ABB9812006B00F3 /* SwiftUIQuizUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C298C2ABB9812006B00F3 /* SwiftUIQuizUITests.swift */; };
 		047C298F2ABB9812006B00F3 /* SwiftUIQuizUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C298E2ABB9812006B00F3 /* SwiftUIQuizUITestsLaunchTests.swift */; };
 		04A0289A2AD380AE00F29536 /* EndScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A028992AD380AE00F29536 /* EndScreenView.swift */; };
-		04B0C9012AD8E15C00C24558 /* NormalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0C9002AD8E15C00C24558 /* NormalTextView.swift */; };
 		04B2119B2ABCF74300856D39 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2119A2ABCF74300856D39 /* Questions.swift */; };
 		04B2119D2ABCFA0400856D39 /* ChoiceTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2119C2ABCFA0400856D39 /* ChoiceTextView.swift */; };
 		04F8920A2AD2051F003EF83E /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F892092AD2051F003EF83E /* GameViewModel.swift */; };
@@ -59,7 +58,6 @@
 		047C298C2ABB9812006B00F3 /* SwiftUIQuizUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIQuizUITests.swift; sourceTree = "<group>"; };
 		047C298E2ABB9812006B00F3 /* SwiftUIQuizUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIQuizUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		04A028992AD380AE00F29536 /* EndScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScreenView.swift; sourceTree = "<group>"; };
-		04B0C9002AD8E15C00C24558 /* NormalTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalTextView.swift; sourceTree = "<group>"; };
 		04B2119A2ABCF74300856D39 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		04B2119C2ABCFA0400856D39 /* ChoiceTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceTextView.swift; sourceTree = "<group>"; };
 		04F892092AD2051F003EF83E /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 				04B2119C2ABCFA0400856D39 /* ChoiceTextView.swift */,
 				046A45282ABDE96400774C9A /* CorrectOrIncorrectView.swift */,
 				04A028992AD380AE00F29536 /* EndScreenView.swift */,
-				04B0C9002AD8E15C00C24558 /* NormalTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -319,7 +316,6 @@
 				04B2119B2ABCF74300856D39 /* Questions.swift in Sources */,
 				0450D2C72AD081C100DAB106 /* GameColor.swift in Sources */,
 				04B2119D2ABCFA0400856D39 /* ChoiceTextView.swift in Sources */,
-				04B0C9012AD8E15C00C24558 /* NormalTextView.swift in Sources */,
 				046A45292ABDE96400774C9A /* CorrectOrIncorrectView.swift in Sources */,
 				047C29722ABB9811006B00F3 /* SwiftUIQuizApp.swift in Sources */,
 				042C2CAC2ACF6874004B3754 /* WelcomeView.swift in Sources */,
