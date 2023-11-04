@@ -18,10 +18,11 @@ struct QuestionView: View {
     // variable to let user know whether he clicked on the correct option or not
     @State var rightOrWrong = ""
     
-    // isShowing will control whether the rightOrWrong text is still visible to the user
-    @State var isShowingText = true
+    @State var isButtonPressed = false
     
     var gameColor = GameColor()
+    
+    @State private var cnt = 0
     
     var body: some View {
         VStack{
@@ -29,15 +30,11 @@ struct QuestionView: View {
                 
             Spacer()
             
-            if rightOrWrong == "Correct!" {
-                if isShowingText {
-                    CorrectOrIncorrectView(rightOrWrong: rightOrWrong, fontColor: gameColor.correctColor, isShowingText: $isShowingText)
-                }
-            } else if rightOrWrong == "Incorrect!" {
-                if isShowingText {
-                    CorrectOrIncorrectView(rightOrWrong: rightOrWrong, fontColor: gameColor.incorrectColor, isShowingText: $isShowingText)
-                }
-            }
+            Image(question.imgName)
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(8.0)
+                .padding()
             
             Spacer()
             
@@ -45,18 +42,28 @@ struct QuestionView: View {
                 ForEach(0..<question.possibleAnswers.count){
                     answerIndex in
                     // Define the view that will be returned for each index
-                    Button(action: {
-                        if answerIndex == question.correctAnswerIndex {
+                    if answerIndex == question.correctAnswerIndex {
+                        Button(action: {
                             rightOrWrong = ""
-                            isShowingText = true
-                            rightOrWrong = "Correct!"
-                        } else {
+                            rightOrWrong = "Correct"
+                            if isButtonPressed != true {
+                                isButtonPressed.toggle()
+                            }
+                            viewModel.makeGuess(atIndex: answerIndex)
+                        }, label: {ChoiceTextView(choiceText: question.possibleAnswers[answerIndex]).background(isButtonPressed ? .green : .clear)})
+                    } else {
+                        Button(action: {
+                            if isButtonPressed == true {
+                                isButtonPressed.toggle()
+                            }
+                            cnt += 1
                             rightOrWrong = ""
-                            isShowingText = true
-                            rightOrWrong = "Incorrect!"
-                        }
-                        viewModel.makeGuess(atIndex: answerIndex)
-                    }, label: {ChoiceTextView(choiceText: question.possibleAnswers[answerIndex])})
+                            rightOrWrong = "Incorrect"
+                            viewModel.makeGuess(atIndex: answerIndex)
+                        }, label: {
+                            Text(question.possibleAnswers[answerIndex]).font(.body).bold().multilineTextAlignment(.center).padding().border(GameColor().accentColor, width: 4).modifier(ShakeEffect(animatableData: CGFloat(cnt)))
+                        }).foregroundColor(.white)
+                    }
                 }
             }
             
@@ -64,16 +71,18 @@ struct QuestionView: View {
             
             NavigationLink(destination: EndScreenView(), isActive: $activateEndScreen, label: {Text("")})
             
-            if viewModel.guessWasMade && rightOrWrong == "Correct!" {
+            if viewModel.guessWasMade && rightOrWrong == "Correct" {
                 if viewModel.isLastQuestion == true {
                     Button(action: {
                         activateEndScreen = true
+                        isButtonPressed = false
                     }, label: {
                         ChoiceTextView(choiceText: "Finish")
                     })
                 } else {
                     Button(action: {
                         viewModel.displayNextScreen()
+                        isButtonPressed = false
                     }, label: {
                         ChoiceTextView(choiceText: "Next Question")
                     })
@@ -84,6 +93,16 @@ struct QuestionView: View {
             Spacer()
             
         }
+    }
+}
+
+struct ShakeEffect : GeometryEffect {
+    var travelDistance: CGFloat = 10
+    var numOfShakes: CGFloat = 4
+    var animatableData: CGFloat
+    
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        ProjectionTransform(CGAffineTransform(translationX: travelDistance * sin(animatableData * .pi * numOfShakes), y: 0))
     }
 }
 

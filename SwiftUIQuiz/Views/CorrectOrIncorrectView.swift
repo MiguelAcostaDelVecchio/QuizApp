@@ -18,13 +18,8 @@ struct CorrectOrIncorrectView: View {
             .bold()
             .font(.title)
             .opacity(1)
-            .onAppear{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    withAnimation {
-                        isShowingText = false
-                    }
-                }
-            }
+            .opacity(isShowingText ? 1.0 : 0.0)
+            .animation(.easeInOut(duration: 2.0))
     }
 }
 

@@ -15,7 +15,7 @@ struct EndScreenView: View {
             NavigationLink(destination: WelcomeView(), isActive: $goHome, label: {Text("")})
             VStack {
                 Spacer()
-                Text("Well done! I guess it is possible to learn something new everyday 😄").font(.title).bold().multilineTextAlignment(.center).padding()
+                Text("Well done! Of course, the questions were not biased! 😄").font(.title).bold().multilineTextAlignment(.center).padding()
                 Spacer()
                 Button(action: {
                     goHome = true

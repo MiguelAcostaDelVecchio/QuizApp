@@ -11,7 +11,12 @@ struct ChoiceTextView: View {
     let choiceText: String
     
     var body: some View {
-        Text(choiceText).font(.body).bold().multilineTextAlignment(.center).padding().border(GameColor().accentColor, width: 4)
+        Text(choiceText)
+            .font(.body)
+            .bold()
+            .multilineTextAlignment(.center)
+            .padding()
+            .border(GameColor().accentColor, width: 4)
     }
 }
 
